@@ -1,0 +1,16 @@
+{
+  "name": "Classified — Доска объявлений",
+  "short_name": "Classified",
+  "description": "Здесь находят спрос и предложение друг друга",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#e8eae7",
+  "theme_color": "#28264b",
+  "icons": [
+    {
+      "src": "/favicon.ico",
+      "sizes": "64x64",
+      "type": "image/x-icon"
+    }
+  ]
+}
