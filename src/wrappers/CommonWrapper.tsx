@@ -1,9 +1,14 @@
 "use client";
 
 import { useEffect } from "react";
+import { observer } from "mobx-react-lite";
 import { useStore } from "@/app/store";
 
-export function CommonWrapper({ children }: { children: React.ReactNode }) {
+export const CommonWrapper = observer(function CommonWrapper({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   const { settingsStore } = useStore();
 
   useEffect(() => {
@@ -11,4 +16,4 @@ export function CommonWrapper({ children }: { children: React.ReactNode }) {
   }, [settingsStore.theme]);
 
   return <>{children}</>;
-}
+});

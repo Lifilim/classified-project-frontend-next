@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect } from "react";
+import { observer } from "mobx-react-lite";
 import {
   SimpleGrid,
   Container,
@@ -14,7 +15,7 @@ import {
 import { useStore } from "@/app/store";
 import { cardsApi } from "@/shared/api/cardsApi";
 
-export default function ServicesPage() {
+const ServicesPage = observer(function ServicesPage() {
   const { servicesStore } = useStore();
 
   useEffect(() => {
@@ -61,4 +62,6 @@ export default function ServicesPage() {
       </SimpleGrid>
     </Container>
   );
-}
+});
+
+export default ServicesPage;

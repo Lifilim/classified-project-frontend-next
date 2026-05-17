@@ -13,7 +13,7 @@ export class SettingsStore {
       if (savedTheme === "light" || savedTheme === "dark") {
         this.theme = savedTheme;
       } else {
-        this.theme = window.matchMedia("(prefers-color-scheme: dark)").matches
+        this.theme = window.matchMedia("(prefers-color-scheme: light)").matches
           ? "dark"
           : "light";
       }

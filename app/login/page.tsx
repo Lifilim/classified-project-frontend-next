@@ -42,12 +42,7 @@ export default function SignInPage() {
           Войти
         </Button>
 
-        <Anchor
-          onClick={() => router.push("/register")}
-          underline="not-hover"
-          c="var(--secondary-color)"
-          style={{ cursor: "pointer" }}
-        >
+        <Anchor onClick={() => router.push("/register")} c="var(--secondary-color)" style={{ cursor: "pointer" }}>
           Нет аккаунта? тыкай сюды
         </Anchor>
       </Stack>

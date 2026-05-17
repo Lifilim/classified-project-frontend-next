@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect } from "react";
+import { observer } from "mobx-react-lite";
 import { Text, Avatar, Card, Box, Flex, Button, ActionIcon } from "@mantine/core";
 import { useRouter } from "next/navigation";
 import { IconPencilMinus } from "@tabler/icons-react";
@@ -8,7 +9,7 @@ import { useStore } from "@/app/store";
 import { ServiceCard } from "@/widgets/ServiceCard";
 import { cardsApi } from "@/shared/api/cardsApi";
 
-export default function ProfilePage() {
+const ProfilePage = observer(function ProfilePage() {
   const { userStore, servicesStore } = useStore();
   const router = useRouter();
   const user = userStore.user;
@@ -87,4 +88,6 @@ export default function ProfilePage() {
       </Card>
     </Box>
   );
-}
+});
+
+export default ProfilePage;

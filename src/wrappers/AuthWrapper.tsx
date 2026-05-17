@@ -1,12 +1,17 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { observer } from "mobx-react-lite";
 import { usePathname, useRouter } from "next/navigation";
 import { useStore } from "@/app/store";
 import { authApi } from "@/shared/api/authApi";
 import { Center, Loader } from "@mantine/core";
 
-export function AuthWrapper({ children }: { children: React.ReactNode }) {
+export const AuthWrapper = observer(function AuthWrapper({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   const { userStore } = useStore();
   const pathname = usePathname();
   const router = useRouter();
@@ -49,4 +54,4 @@ export function AuthWrapper({ children }: { children: React.ReactNode }) {
   }
 
   return <>{children}</>;
-}
+});

@@ -1,11 +1,16 @@
 "use client";
 
+import { observer } from "mobx-react-lite";
 import { useStore } from "@/app/store";
 import { useRouter, usePathname } from "next/navigation";
 import { useDisclosure } from "@mantine/hooks";
 import { Button, Drawer } from "@mantine/core";
 
-export function AppLayout({ children }: { children: React.ReactNode }) {
+export const AppLayout = observer(function AppLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   const { settingsStore, userStore } = useStore();
   const router = useRouter();
   const pathname = usePathname();
@@ -109,4 +114,4 @@ export function AppLayout({ children }: { children: React.ReactNode }) {
       <div style={{ marginTop: 0 }}>{children}</div>
     </>
   );
-}
+});

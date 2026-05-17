@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { observer } from "mobx-react-lite";
 import { useRouter } from "next/navigation";
 import {
   Text,
@@ -18,7 +19,7 @@ import { IconCircleCheck, IconX } from "@tabler/icons-react";
 import { useStore } from "@/app/store";
 import { authApi } from "@/shared/api/authApi";
 
-export default function EditProfilePage() {
+const EditProfilePage = observer(function EditProfilePage() {
   const { userStore } = useStore();
   const router = useRouter();
   const user = userStore.user;
@@ -103,4 +104,6 @@ export default function EditProfilePage() {
       </Card>
     </Box>
   );
-}
+});
+
+export default EditProfilePage;

@@ -1,13 +1,14 @@
 "use client";
 
 import { useEffect } from "react";
+import { observer } from "mobx-react-lite";
 import { SimpleGrid, Container, Button, Center, Title } from "@mantine/core";
 import { useRouter } from "next/navigation";
 import { useStore } from "@/app/store";
 import { ServiceCard } from "@/widgets/ServiceCard";
 import { cardsApi } from "@/shared/api/cardsApi";
 
-export default function FeedPage() {
+const FeedPage = observer(function FeedPage() {
   const { servicesStore } = useStore();
   const router = useRouter();
 
@@ -72,4 +73,6 @@ export default function FeedPage() {
       </SimpleGrid>
     </Container>
   );
-}
+});
+
+export default FeedPage;

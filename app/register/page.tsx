@@ -53,13 +53,7 @@ export default function SignUpPage() {
           Зарегистрироваться
         </Button>
 
-        <Anchor
-          onClick={() => router.push("/login")}
-          underline="not-hover"
-          c="var(--secondary-color)"
-          ml="auto"
-          style={{ cursor: "pointer" }}
-        >
+        <Anchor onClick={() => router.push("/login")} c="var(--secondary-color)" ml="auto" style={{ cursor: "pointer" }}>
           Есть аккаунт? тыкай сюды
         </Anchor>
       </Stack>
