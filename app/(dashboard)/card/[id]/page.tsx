@@ -9,6 +9,7 @@ import type { Service } from "@/shared/types/service";
 const PLACEHOLDER = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='700' height='300'%3E%3Crect width='700' height='300' fill='%234e5174'/%3E%3Ctext x='50%25' y='50%25' fill='%23e8eae7' font-size='24' text-anchor='middle' dy='.3em'%3ENo Image%3C/text%3E%3C/svg%3E";
 
 export default function ServiceDetailsPage() {
+  // throw new Error("Тестовая ошибка card");
   const params = useParams();
   const id = params.id as string;
   const [service, setService] = useState<Service | null>(null);

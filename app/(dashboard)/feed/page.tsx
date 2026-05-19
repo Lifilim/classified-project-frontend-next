@@ -9,6 +9,7 @@ import { ServiceCard } from "@/widgets/ServiceCard";
 import { cardsApi } from "@/shared/api/cardsApi";
 
 const FeedPage = observer(function FeedPage() {
+  // throw new Error("Тестовая ошибка feed");
   const { servicesStore } = useStore();
   const router = useRouter();
 
