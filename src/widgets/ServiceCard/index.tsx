@@ -4,10 +4,11 @@ import { Card, Image, Text, Group, Button, Badge, Stack } from "@mantine/core";
 import { useRouter } from "next/navigation";
 import type { Service } from "@/shared/types/service";
 
-const PLACEHOLDER = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='160'%3E%3Crect width='300' height='160' fill='%234e5174'/%3E%3Ctext x='50%25' y='50%25' fill='%23e8eae7' font-size='16' text-anchor='middle' dy='.3em'%3ENo Image%3C/text%3E%3C/svg%3E";
+const PLACEHOLDER = "./404.png";
 
 export function ServiceCard(props: Service) {
   const router = useRouter();
+  console.log(props.imageUrl);
 
   return (
     <Card

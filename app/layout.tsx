@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
+import "@mantine/core/styles.css";
 import "./globals.css";
 import { Providers } from "@/widgets/Providers";
 
-const baseUrl = "http://localhost:3000";
+const baseUrl = `${process.env.NEXT_PUBLIC_BASE_URL}`;
 
 export const metadata: Metadata = {
   title: {
@@ -10,7 +11,7 @@ export const metadata: Metadata = {
     template: "%s | Classified",
   },
   description:
-    "Здесь находят спрос и предложение друг друга. Площадка для размещения объявлений и услуг.",
+    "Здесь спрос и предложение находят друг друга. Площадка для размещения объявлений и услуг.",
   icons: {
     icon: "/favicon.ico",
   },
@@ -18,7 +19,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Classified — Доска объявлений",
     description:
-      "Здесь находят спрос и предложение друг друга. Площадка для размещения объявлений и услуг.",
+      "Здесь спрос и предложение находят друг друга. Площадка для размещения объявлений и услуг.",
     url: baseUrl,
     siteName: "Classified",
     locale: "ru_RU",
