@@ -6,7 +6,7 @@ import { usePathname, useRouter } from "next/navigation";
 import { useStore } from "@/app/store";
 import { authApi } from "@/shared/api/authApi";
 import { Center, Loader } from "@mantine/core";
-import sitemap from "../../app/sitemap";
+import sitemap from "../../../app/sitemap";
 
 export const AuthWrapper = observer(function AuthWrapper({
   children,

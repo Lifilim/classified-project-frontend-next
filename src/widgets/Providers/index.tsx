@@ -2,8 +2,8 @@
 
 import { MantineProvider, createTheme } from "@mantine/core";
 import { StoreProvider } from "@/app/store";
-import { CommonWrapper } from "@/wrappers/CommonWrapper";
-import { AuthWrapper } from "@/wrappers/AuthWrapper";
+import { AuthWrapper } from "@/widgets/AuthWrapper";
+import { CommonWrapper } from "@/widgets/CommonWrapper";
 
 const theme = createTheme({});
 
