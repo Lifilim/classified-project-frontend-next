@@ -13,9 +13,13 @@ export class SettingsStore {
       if (savedTheme === "light" || savedTheme === "dark") {
         this.theme = savedTheme;
       } else {
-        this.theme = window.matchMedia("(prefers-color-scheme: light)").matches
-          ? "dark"
-          : "light";
+        // this.theme = window.matchMedia("(prefers-color-scheme: dark)").matches
+        //   ? "dark"
+        //   : "light";
+        const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
+        mediaQuery.addEventListener("change", (e) => {
+          this.theme = e.matches ? "dark" : "light";
+        });
       }
       this.language = localStorage.getItem("lang") || "ru";
     }

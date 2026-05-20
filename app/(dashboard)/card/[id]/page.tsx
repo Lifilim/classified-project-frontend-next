@@ -6,7 +6,7 @@ import { Box, Card, Image, Text, Badge, Stack, Loader } from "@mantine/core";
 import { cardsApi } from "@/shared/api/cardsApi";
 import type { Service } from "@/shared/types/service";
 
-const PLACEHOLDER = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='700' height='300'%3E%3Crect width='700' height='300' fill='%234e5174'/%3E%3Ctext x='50%25' y='50%25' fill='%23e8eae7' font-size='24' text-anchor='middle' dy='.3em'%3ENo Image%3C/text%3E%3C/svg%3E";
+const PLACEHOLDER = "/no-img.svg";
 
 export default function ServiceDetailsPage() {
   // throw new Error("Тестовая ошибка card");
@@ -42,7 +42,8 @@ export default function ServiceDetailsPage() {
 
   return (
     <Box w="clamp(300px, 80vw, 700px)" mx="auto" pt="7vh">
-      <Card shadow="md" p="lg" radius={0} withBorder>
+      <Card shadow="md" p="lg" radius={0} withBorder 
+            bg="var(--base-color)">
         <Card.Section>
           <Image src={service.imageUrl || PLACEHOLDER} height={300} alt={service.title} />
         </Card.Section>

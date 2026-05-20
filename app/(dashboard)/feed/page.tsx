@@ -43,7 +43,7 @@ const FeedPage = observer(function FeedPage() {
   }
 
   return (
-    <Container size="xl" py="xl">
+    <Container size="xl" py="xl" mt="3vh">
       <div
         style={{
           display: "grid",
@@ -59,6 +59,7 @@ const FeedPage = observer(function FeedPage() {
           size="compact-md"
           variant="gradient"
           gradient={{ from: "var(--secondary-color)", to: "var(--accent-color)", deg: 90 }}
+          c="var(--base-color)"
         >
           на главную
         </Button>
@@ -67,7 +68,7 @@ const FeedPage = observer(function FeedPage() {
         </Title>
       </div>
 
-      <SimpleGrid cols={{ base: 1, sm: 2, md: 3 }} spacing="lg">
+      <SimpleGrid cols={{ base: 1, sm: 2, md: 3 }} spacing="lg" verticalSpacing="lg">
         {servicesStore.items.map((item) => (
           <ServiceCard key={item.id} {...item} />
         ))}

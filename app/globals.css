@@ -11,11 +11,11 @@
 }
 
 :root[data-theme="dark"] {
-  --secondary-color: #e8eae7;
-  --base-color: #28264b;
-  --accent-color: #a40033;
-  --surface-color: #4e5174;
-  --neutral-color: #959ec9;
+  --secondary-color: #D7D9B4;
+  --base-color: #171518;
+  --accent-color: #92769f;
+  --surface-color: #6A6136;
+  --neutral-color: #B1AE8B;
   --text-color: #000;
 }
 

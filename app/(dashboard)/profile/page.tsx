@@ -36,7 +36,8 @@ const ProfilePage = observer(function ProfilePage() {
 
   return (
     <Box w="clamp(300px, 80vw, 600px)" mx="auto" pt="7vh">
-      <Card withBorder p="lg">
+      <Card  p="lg"
+            bg="var(--base-color)">
         <Card.Section inheritPadding withBorder>
           <Flex mb="xs" gap="md" align="center">
             <Avatar src={user.avatar} color="var(--secondary-color)" />
@@ -49,8 +50,8 @@ const ProfilePage = observer(function ProfilePage() {
               {user.name}
             </Text>
             <Flex direction="column" align="flex-start">
-              <Text fz="xs">{user.createdAt}</Text>
-              <Text fz="xs">{user.phone}</Text>
+              <Text fz="xs" c="var(--secondary-color)">{user.createdAt} </Text>
+              <Text fz="xs" c="var(--secondary-color)">{user.phone}</Text>
             </Flex>
             <ActionIcon
               ml="auto"
@@ -58,14 +59,14 @@ const ProfilePage = observer(function ProfilePage() {
               color="var(--secondary-color)"
               onClick={() => router.push("/profile/edit")}
             >
-              <IconPencilMinus />
+              <IconPencilMinus color="var(--secondary-color)" />
             </ActionIcon>
           </Flex>
         </Card.Section>
 
         <Card.Section inheritPadding pb="xs" withBorder>
           <Flex mt="sm" gap="md" align="center" justify="space-between">
-            <Text ta="left" fz="h3">
+            <Text ta="left" fz="h3" c="var(--secondary-color)">
               ★ {user.rating}
             </Text>
             <Text ta="right" fz="xs">
