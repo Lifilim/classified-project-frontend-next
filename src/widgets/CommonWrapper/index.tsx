@@ -2,7 +2,7 @@
 
 import { useEffect } from "react";
 import { observer } from "mobx-react-lite";
-import { useStore } from "@/app/store";
+import { useStore } from "@/shared/store";
 
 export const CommonWrapper = observer(function CommonWrapper({
   children,
@@ -12,8 +12,8 @@ export const CommonWrapper = observer(function CommonWrapper({
   const { settingsStore } = useStore();
 
   useEffect(() => {
-    document.documentElement.setAttribute("data-theme", settingsStore.theme);
-  }, [settingsStore.theme]);
+    document.documentElement.setAttribute("data-theme", settingsStore.state.theme);
+  }, [settingsStore.state.theme]);
 
   return <>{children}</>;
 });

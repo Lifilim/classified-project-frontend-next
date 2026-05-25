@@ -4,11 +4,12 @@ import { Card, Image, Text, Group, Button, Badge, Stack } from "@mantine/core";
 import { useRouter } from "next/navigation";
 import type { Service } from "@/shared/types/service";
 
-const PLACEHOLDER = "./404.png";
+const PLACEHOLDER = "/404.png";
 
 export function ServiceCard(props: Service) {
+  // throw new Error("Тестовая ошибка ServiceCard");
   const router = useRouter();
-  console.log(props.imageUrl);
+  // console.log(props.imageUrl);
 
   return (
     <Card
@@ -17,19 +18,23 @@ export function ServiceCard(props: Service) {
       radius={0}
       withBorder
       bg="var(--base-color)"
-      style={{ borderColor: "var(--neutral-color)" }}
+      style={{ borderColor: "var(--neutral-color)", display: "flex", flexDirection: "column" }}
     >
       <Card.Section>
         <Image
           src={props.imageUrl || PLACEHOLDER}
-          height={160}
+          onError={(e) => {
+            const img = e.currentTarget as HTMLImageElement;
+            if (!img.src.includes("404.png")) img.src = PLACEHOLDER;
+          }}
+          h={160}
           alt={props.title}
         />
       </Card.Section>
 
       <Stack mt="md" gap="xs">
         <Group justify="space-between">
-          <Text fw={700} style={{ whiteSpace: "pre-line" }} tt="uppercase" c="var(--secondary-color)">
+          <Text fw={700} lineClamp={1} tt="uppercase" c="var(--secondary-color)">
             {props.title}
           </Text>
           <Badge color="var(--surface-color)" radius={0} variant="filled">
@@ -52,6 +57,8 @@ export function ServiceCard(props: Service) {
         radius={0}
         bg="var(--secondary-color)"
         onClick={() => router.push(`/card/${props.id}`)}
+        c="var(--text-color)"
+        style={{ alignSelf: "flex-end"}}
       >
         Подробнее
       </Button>

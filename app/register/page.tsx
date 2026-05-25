@@ -5,7 +5,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { InputBase, PasswordInput, Button, Anchor, Stack, Box } from "@mantine/core";
-import { useStore } from "@/app/store";
+import { useStore } from "@/shared/store";
 
 export default function SignUpPage() {
   const { userStore } = useStore();
@@ -21,7 +21,7 @@ export default function SignUpPage() {
       return;
     }
     try {
-      await userStore.register({ phone, password: passw1, name: "someUserName" });
+      await userStore.async.register({ phone, password: passw1, name: "someUserName" });
       router.push("/feed");
     } catch (error) {
       console.error("Registration failed:", error);

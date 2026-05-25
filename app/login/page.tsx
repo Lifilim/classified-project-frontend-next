@@ -5,7 +5,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { InputBase, PasswordInput, Button, Anchor, Stack, Box } from "@mantine/core";
-import { useStore } from "@/app/store";
+import { useStore } from "@/shared/store";
 
 export default function SignInPage() {
   const { userStore } = useStore();
@@ -16,7 +16,7 @@ export default function SignInPage() {
 
   const handleLogin = async () => {
     try {
-      await userStore.login({ phone, password });
+      await userStore.async.login({ phone, password });
       router.push("/feed");
     } catch {
       console.error("Login failed");

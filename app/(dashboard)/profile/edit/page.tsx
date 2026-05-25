@@ -16,13 +16,12 @@ import {
 } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 import { IconCircleCheck, IconX } from "@tabler/icons-react";
-import { useStore } from "@/app/store";
-import { authApi } from "@/shared/api/authApi";
+import { useStore } from "@/shared/store";
 
 const EditProfilePage = observer(function EditProfilePage() {
   const { userStore } = useStore();
   const router = useRouter();
-  const user = userStore.user;
+  const user = userStore.state.user;
   const [opened, { open, close }] = useDisclosure(false);
 
   const [form, setForm] = useState({
@@ -31,8 +30,7 @@ const EditProfilePage = observer(function EditProfilePage() {
 
   const handleUpdate = async () => {
     try {
-      const updated = await authApi.updateProfile(form);
-      userStore.setUser(updated);
+      await userStore.async.updateProfile(form);
       router.push("/profile");
     } catch {
       console.error("Failed to update profile");
@@ -41,8 +39,7 @@ const EditProfilePage = observer(function EditProfilePage() {
 
   const handleDelete = async () => {
     try {
-      await authApi.deleteProfile();
-      userStore.logout();
+      await userStore.async.deleteProfile();
       router.push("/login");
     } catch {
       console.error("Failed to delete profile");

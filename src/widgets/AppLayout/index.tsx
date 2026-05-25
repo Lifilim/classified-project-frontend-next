@@ -1,11 +1,12 @@
 "use client";
 
 import { observer } from "mobx-react-lite";
-import { useStore } from "@/app/store";
+import { useStore } from "@/shared/store";
 import { useRouter, usePathname } from "next/navigation";
 import { useDisclosure } from "@mantine/hooks";
 import { Button, Drawer } from "@mantine/core";
-import { relative } from "path";
+import { useEffect, useState } from "react";
+// import { relative } from "path";
 
 export const AppLayout = observer(function AppLayout({
   children,
@@ -16,13 +17,20 @@ export const AppLayout = observer(function AppLayout({
   const router = useRouter();
   const pathname = usePathname();
   const [opened, { open, close }] = useDisclosure(false);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => setMounted(true), []);  
+  
+  if (!mounted) {
+    return <>{children}</>; 
+  }
 
   const handleTheme = () => {
-    settingsStore.toggleTheme();
+    settingsStore.sync.toggleTheme();
   };
 
   const handleLogout = () => {
-    userStore.logout();
+    userStore.sync.logout();
     router.push("/login");
   };
 
@@ -31,7 +39,7 @@ export const AppLayout = observer(function AppLayout({
     router.push(path);
   };
 
-  const curTheme = settingsStore.theme;
+  const curTheme = settingsStore.state.theme;
 
   const navItems = [
     { label: "Профиль", path: "/profile" },
@@ -45,7 +53,7 @@ export const AppLayout = observer(function AppLayout({
 
   return (
     <>
-      <div style={{ position: "fixed", height: "auto", width:"100%", display: "flex", alignItems: "center", zIndex: "1000" }}>
+      <div style={{ position: "fixed", height: "auto", width:"100%", display: "flex", alignItems: "center", zIndex: "10" }}>
         <Button
           variant="filled"
           radius="xl"
@@ -83,7 +91,6 @@ export const AppLayout = observer(function AppLayout({
           // top="10px"
           // right="10px"
           m="1vh 1vw 1vh"
-          style={{ zIndex: 10 }}
         >
           ≡
         </Button>
@@ -99,7 +106,7 @@ export const AppLayout = observer(function AppLayout({
             color: "#000",
           }}
           styles={{
-            content: { backgroundColor: "var(--base-color)" },
+            content: { backgroundColor: "var(--base-color)", zIndex: "11" },
             header: { backgroundColor: "var(--base-color)" },
             close: { color: "var(--secondary-color)" },
           }}

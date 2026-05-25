@@ -1,0 +1,9 @@
+# https://www.robotstxt.org/robotstxt.html
+User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /_next/
+Disallow: /profile
+Disallow: /quotes/create
+
+Sitemap: https://quote-app.com/sitemap.xml
