@@ -6,7 +6,6 @@ import { SimpleGrid, Container, Button, Center, Title } from "@mantine/core";
 import { useRouter } from "next/navigation";
 import { useStore } from "@/app/store";
 import { ServiceCard } from "@/widgets/ServiceCard";
-import { cardsApi } from "@/shared/api/cardsApi";
 
 const FeedPage = observer(function FeedPage() {
   // throw new Error("Тестовая ошибка feed");
@@ -14,29 +13,18 @@ const FeedPage = observer(function FeedPage() {
   const router = useRouter();
 
   useEffect(() => {
-    const fetch = async () => {
-      servicesStore.setLoading(true);
-      try {
-        const data = await cardsApi.getAll();
-        servicesStore.setItems(data);
-      } catch {
-        servicesStore.setError("Не удалось загрузить услуги(((");
-      } finally {
-        servicesStore.setLoading(false);
-      }
-    };
-    fetch();
+    servicesStore.async.fetchAll();
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
-  if (servicesStore.loading) {
+  if (servicesStore.state.loading) {
     return <Center h="100vh">Loading...</Center>;
   }
 
-  if (servicesStore.error) {
+  if (servicesStore.state.error) {
     return (
       <Center h="100vh">
         <Title order={3} c="var(--accent-color)">
-          {servicesStore.error}
+          {servicesStore.state.error}
         </Title>
       </Center>
     );
@@ -69,7 +57,7 @@ const FeedPage = observer(function FeedPage() {
       </div>
 
       <SimpleGrid cols={{ base: 1, sm: 2, md: 3 }} spacing="lg" verticalSpacing="lg">
-        {servicesStore.items.map((item) => (
+        {servicesStore.state.items.map((item) => (
           <ServiceCard key={item.id} {...item} />
         ))}
       </SimpleGrid>

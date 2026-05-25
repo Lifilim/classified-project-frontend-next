@@ -21,7 +21,7 @@ export default function SignUpPage() {
       return;
     }
     try {
-      await userStore.register({ phone, password: passw1, name: "someUserName" });
+      await userStore.async.register({ phone, password: passw1, name: "someUserName" });
       router.push("/feed");
     } catch (error) {
       console.error("Registration failed:", error);

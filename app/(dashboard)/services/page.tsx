@@ -13,31 +13,19 @@ import {
   Group,
 } from "@mantine/core";
 import { useStore } from "@/app/store";
-import { cardsApi } from "@/shared/api/cardsApi";
 
 const ServicesPage = observer(function ServicesPage() {
   const { servicesStore } = useStore();
 
   useEffect(() => {
-    const fetch = async () => {
-      servicesStore.setLoading(true);
-      try {
-        const data = await cardsApi.getAll();
-        servicesStore.setItems(data);
-      } catch {
-        servicesStore.setError("Не удалось загрузить услуги");
-      } finally {
-        servicesStore.setLoading(false);
-      }
-    };
-    fetch();
+    servicesStore.async.fetchAll();
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
-  if (servicesStore.loading) {
+  if (servicesStore.state.loading) {
     return <Center h="100vh">Loading...</Center>;
   }
 
-  const categories = [...new Set(servicesStore.items.map((s) => s.category))];
+  const categories = [...new Set(servicesStore.state.items.map((s) => s.category))];
 
   return (
     <Container size="xl" py="xl">
@@ -47,7 +35,7 @@ const ServicesPage = observer(function ServicesPage() {
 
       <SimpleGrid cols={{ base: 1, sm: 2, md: 3 }} spacing="lg">
         {categories.map((cat) => {
-          const count = servicesStore.items.filter((s) => s.category === cat).length;
+          const count = servicesStore.state.items.filter((s) => s.category === cat).length;
           return (
             <Card key={cat} shadow="sm" p="lg" withBorder bg="var(--base-color)">
               <Group justify="space-between">

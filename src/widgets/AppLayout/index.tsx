@@ -26,11 +26,11 @@ export const AppLayout = observer(function AppLayout({
   }
 
   const handleTheme = () => {
-    settingsStore.toggleTheme();
+    settingsStore.sync.toggleTheme();
   };
 
   const handleLogout = () => {
-    userStore.logout();
+    userStore.sync.logout();
     router.push("/login");
   };
 
@@ -39,7 +39,7 @@ export const AppLayout = observer(function AppLayout({
     router.push(path);
   };
 
-  const curTheme = settingsStore.theme;
+  const curTheme = settingsStore.state.theme;
 
   const navItems = [
     { label: "Профиль", path: "/profile" },

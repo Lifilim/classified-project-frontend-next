@@ -1,17 +1,11 @@
-import { UserStore } from "./UserStore";
-import { ServicesStore } from "./ServicesStore";
-import { SettingsStore } from "./SettingsStore";
+import { userStore } from "./user/userStore";
+import { servicesStore } from "./services/servicesStore";
+import { settingsStore } from "./settings/settingsStore";
 
 export class RootStore {
-  userStore: UserStore;
-  servicesStore: ServicesStore;
-  settingsStore: SettingsStore;
-
-  constructor() {
-    this.userStore = new UserStore();
-    this.servicesStore = new ServicesStore();
-    this.settingsStore = new SettingsStore();
-  }
+  userStore = userStore;
+  servicesStore = servicesStore;
+  settingsStore = settingsStore;
 }
 
 let rootStore: RootStore | null = null;

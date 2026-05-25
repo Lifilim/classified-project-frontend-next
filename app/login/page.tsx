@@ -16,7 +16,7 @@ export default function SignInPage() {
 
   const handleLogin = async () => {
     try {
-      await userStore.login({ phone, password });
+      await userStore.async.login({ phone, password });
       router.push("/feed");
     } catch {
       console.error("Login failed");

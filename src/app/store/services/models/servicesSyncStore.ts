@@ -1,33 +1,29 @@
 import { makeAutoObservable } from "mobx";
+import type { ServicesStateStore } from "./servicesStateStore";
 import type { Service } from "@/shared/types/service";
 
-export class ServicesStore {
-  items: Service[] = [];
-  loading: boolean = false;
-  error: string | null = null;
-  myItems: Service[] = [];
-
-  constructor() {
+export class ServicesSyncStore {
+  constructor(private state: ServicesStateStore) {
     makeAutoObservable(this);
   }
 
   setItems(items: Service[]): void {
-    this.items = items;
+    this.state.items = items;
   }
 
   setMyItems(items: Service[]): void {
-    this.myItems = items;
+    this.state.myItems = items;
   }
 
   setLoading(loading: boolean): void {
-    this.loading = loading;
+    this.state.loading = loading;
   }
 
   setError(error: string | null): void {
-    this.error = error;
+    this.state.error = error;
   }
 
   clearMyItems(): void {
-    this.myItems = [];
+    this.state.myItems = [];
   }
 }
