@@ -1,7 +1,7 @@
 "use client";
 
 import { MantineProvider, createTheme } from "@mantine/core";
-import { StoreProvider } from "@/app/store";
+import { StoreProvider } from "@/shared/store";
 import { AuthWrapper } from "@/widgets/AuthWrapper";
 import { CommonWrapper } from "@/widgets/CommonWrapper";
 

@@ -1,11 +1,10 @@
 "use client";
 
-import { Suspense, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { observer } from "mobx-react-lite";
 import { usePathname, useRouter } from "next/navigation";
-import { useStore } from "@/app/store";
+import { useStore } from "@/shared/store";
 import { Center, Loader } from "@mantine/core";
-import sitemap from "@/../public/sitemap";
 
 export const AuthWrapper = observer(function AuthWrapper({
   children,
@@ -20,9 +19,6 @@ export const AuthWrapper = observer(function AuthWrapper({
   const publicRoutes = ["/", "/login", "/register"];
   const isPublic = publicRoutes.includes(pathname);
   const [mounted, setMounted] = useState(false);
-  
-  const allRoutes = sitemap();
-  const isExistingRoute = allRoutes.includes({url: pathname});
 
   
   useEffect(() => {
@@ -31,7 +27,7 @@ export const AuthWrapper = observer(function AuthWrapper({
 
   useEffect(() => {
     const restoreSession = async () => {
-      if (userStore.state.token && !userStore.state.user) { // isExistingRoute && 
+      if (userStore.state.token && !userStore.state.user) {
         try {
           await userStore.async.fetchProfile();
         } catch {
@@ -44,10 +40,10 @@ export const AuthWrapper = observer(function AuthWrapper({
   }, []); 
 
   useEffect(() => {
-    if (isExistingRoute && !loading && !isPublic && !userStore.state.token) {
+    if (!loading && !isPublic && !userStore.state.token) {
       router.push("/login");
     }
-  }, [isExistingRoute, loading, isPublic, userStore.state.token, router]);
+  }, [loading, isPublic, userStore.state.token, router]);
 
 
   if (!mounted) return <>{children}</>;

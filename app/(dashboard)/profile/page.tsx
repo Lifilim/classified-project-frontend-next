@@ -5,7 +5,7 @@ import { observer } from "mobx-react-lite";
 import { Text, Avatar, Card, Box, Flex, Button, ActionIcon } from "@mantine/core";
 import { useRouter } from "next/navigation";
 import { IconPencilMinus } from "@tabler/icons-react";
-import { useStore } from "@/app/store";
+import { useStore } from "@/shared/store";
 import { ServiceCard } from "@/widgets/ServiceCard";
 
 const ProfilePage = observer(function ProfilePage() {

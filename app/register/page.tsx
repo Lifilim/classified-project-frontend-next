@@ -5,7 +5,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { InputBase, PasswordInput, Button, Anchor, Stack, Box } from "@mantine/core";
-import { useStore } from "@/app/store";
+import { useStore } from "@/shared/store";
 
 export default function SignUpPage() {
   const { userStore } = useStore();

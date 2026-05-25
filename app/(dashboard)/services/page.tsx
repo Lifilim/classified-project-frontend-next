@@ -12,7 +12,7 @@ import {
   Badge,
   Group,
 } from "@mantine/core";
-import { useStore } from "@/app/store";
+import { useStore } from "@/shared/store";
 
 const ServicesPage = observer(function ServicesPage() {
   const { servicesStore } = useStore();

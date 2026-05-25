@@ -16,7 +16,7 @@ import {
 } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 import { IconCircleCheck, IconX } from "@tabler/icons-react";
-import { useStore } from "@/app/store";
+import { useStore } from "@/shared/store";
 
 const EditProfilePage = observer(function EditProfilePage() {
   const { userStore } = useStore();

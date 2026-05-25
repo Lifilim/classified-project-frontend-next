@@ -2,7 +2,7 @@
 
 import { useEffect } from "react";
 import { observer } from "mobx-react-lite";
-import { useStore } from "@/app/store";
+import { useStore } from "@/shared/store";
 
 export const CommonWrapper = observer(function CommonWrapper({
   children,

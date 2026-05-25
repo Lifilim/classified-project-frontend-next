@@ -4,7 +4,7 @@ import { useEffect } from "react";
 import { observer } from "mobx-react-lite";
 import { SimpleGrid, Container, Button, Center, Title } from "@mantine/core";
 import { useRouter } from "next/navigation";
-import { useStore } from "@/app/store";
+import { useStore } from "@/shared/store";
 import { ServiceCard } from "@/widgets/ServiceCard";
 
 const FeedPage = observer(function FeedPage() {

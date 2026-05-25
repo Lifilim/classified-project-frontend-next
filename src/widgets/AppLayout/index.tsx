@@ -1,7 +1,7 @@
 "use client";
 
 import { observer } from "mobx-react-lite";
-import { useStore } from "@/app/store";
+import { useStore } from "@/shared/store";
 import { useRouter, usePathname } from "next/navigation";
 import { useDisclosure } from "@mantine/hooks";
 import { Button, Drawer } from "@mantine/core";
