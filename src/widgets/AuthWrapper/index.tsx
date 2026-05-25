@@ -5,7 +5,7 @@ import { observer } from "mobx-react-lite";
 import { usePathname, useRouter } from "next/navigation";
 import { useStore } from "@/app/store";
 import { Center, Loader } from "@mantine/core";
-import sitemap from "../../../app/sitemap";
+import sitemap from "@/../public/sitemap";
 
 export const AuthWrapper = observer(function AuthWrapper({
   children,
