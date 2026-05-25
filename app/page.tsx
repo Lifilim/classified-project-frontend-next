@@ -7,7 +7,7 @@ export default function LandingPage() {
       <Title order={1} size="20vh" c="rgb(164, 0, 51)" tt="uppercase" pos="absolute" top="39%">
         Здесь
       </Title>
-      <Title order={1} size="7vh" c="var(--text-color)" pos="absolute" top="56%" left="15vh" style={{ transform: "rotate(-5deg)" }}>
+      <Title order={1} size="7vh" c="var(--text-color)" pos="absolute" top="56%" left="15vh" style={{ transform: "rotate(-5deg)", zIndex:"1", textAlign:"center" }}>
         спрос и предложение
       </Title>
       <Title order={1} size="20vh" c="rgb(40, 38, 75)" tt="uppercase" pos="absolute" top="60%">
