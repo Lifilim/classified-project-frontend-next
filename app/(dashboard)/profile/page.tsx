@@ -27,7 +27,7 @@ const ProfilePage = observer(function ProfilePage() {
 
   return (
     <Box w="clamp(300px, 80vw, 600px)" mx="auto" pt="7vh">
-      <Card  p="lg"
+      <Card p ="lg"
             bg="var(--base-color)">
         <Card.Section inheritPadding withBorder>
           <Flex mb="xs" gap="md" align="center">
@@ -67,15 +67,17 @@ const ProfilePage = observer(function ProfilePage() {
         </Card.Section>
 
         <Card.Section inheritPadding pb="xs" withBorder>
-          {servicesStore.state.myItems.length > 0 ? (
-            servicesStore.state.myItems.map((item) => (
-              <ServiceCard key={item.id} {...item} />
-            ))
-          ) : (
-            <Text ta="center" py="md" c="var(--neutral-color)">
-              У вас пока нет объявлений
-            </Text>
-          )}
+          <Flex mt="xs" gap="xs" direction="column">
+            {servicesStore.state.myItems.length > 0 ? (
+              servicesStore.state.myItems.map((item) => (
+                <ServiceCard key={item.id} {...item} />
+              ))
+            ) : (
+              <Text ta="center" py="md" c="var(--neutral-color)">
+                У вас пока нет объявлений
+              </Text>
+            )}
+          </Flex>
         </Card.Section>
       </Card>
     </Box>

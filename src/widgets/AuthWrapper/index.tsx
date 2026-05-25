@@ -31,7 +31,7 @@ export const AuthWrapper = observer(function AuthWrapper({
 
   useEffect(() => {
     const restoreSession = async () => {
-      if (isExistingRoute && userStore.state.token && !userStore.state.user) {
+      if (userStore.state.token && !userStore.state.user) { // isExistingRoute && 
         try {
           await userStore.async.fetchProfile();
         } catch {
