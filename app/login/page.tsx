@@ -27,18 +27,24 @@ export default function SignInPage() {
     <Box w="clamp(300px, 80vw, 600px)" mx="auto" pt="7vh">
       <Stack gap="md">
         <InputBase
+          size="md"
           label="Your phone"
+          c="var(--secondary-color)"
           placeholder="Your phone"
           value={phone}
           onChange={(event) => setPhone(event.currentTarget.value)}
+          className='pw-input'
         />
         <PasswordInput
+          size="md"
           label="Password"
+          c="var(--secondary-color)"
           placeholder="Input password"
           value={password}
           onChange={(event) => setPassw(event.currentTarget.value)}
+          classNames={{ input: 'pw-input' }}
         />
-        <Button onClick={handleLogin} variant="filled" color="var(--neutral-color)">
+        <Button onClick={handleLogin} variant="filled" color="var(--secondary-color)" c="var(--text-color)">
           Войти
         </Button>
 

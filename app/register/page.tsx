@@ -32,24 +32,35 @@ export default function SignUpPage() {
     <Box w="clamp(300px, 80vw, 600px)" mx="auto" mt="xl">
       <Stack gap="md">
         <InputBase
+          size="md"
+          type="tel"
           label="Your phone"
+          c="var(--secondary-color)"
           placeholder="Your phone"
           value={phone}
           onChange={(event) => setPhone(event.currentTarget.value)}
-        />
+          className='pw-input'
+          />
         <PasswordInput
+          size="md"
           label="Password"
+          c="var(--secondary-color)"
           placeholder="Input password"
           value={passw1}
           onChange={(event) => setPassw1(event.currentTarget.value)}
-        />
+          classNames={{ input: 'pw-input' }}
+          // styles={{ input: { backgroundColor: 'var(--text-color)', color: 'var(--secondary-color)', '&::placeholder': { color: 'var(--text-color)' } } }}
+          />
         <PasswordInput
+          size="md"
           label="Password again"
+          c="var(--secondary-color)"
           placeholder="Input password again"
           value={passw2}
           onChange={(event) => setPassw2(event.currentTarget.value)}
+          classNames={{ input: 'pw-input' }}
         />
-        <Button onClick={handleRegister} variant="filled" color="var(--secondary-color)">
+        <Button onClick={handleRegister} variant="filled" color="var(--secondary-color)" c="var(--text-color)">
           Зарегистрироваться
         </Button>
 

@@ -8,6 +8,7 @@ class SettingsStore {
   constructor(state: SettingsStateStore, sync: SettingsSyncStore) {
     this.state = state;
     this.sync = sync;
+    sync.init(); 
   }
 }
 
