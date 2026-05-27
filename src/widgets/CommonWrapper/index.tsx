@@ -12,8 +12,8 @@ export const CommonWrapper = observer(function CommonWrapper({
   const { settingsStore } = useStore();
 
   useEffect(() => {
-    document.documentElement.setAttribute("data-theme", settingsStore.state.theme);
-  }, [settingsStore.state.theme]);
+    document.documentElement.setAttribute("data-theme", settingsStore.state.effectiveTheme);
+  }, [settingsStore.state.effectiveTheme]);
 
   return <>{children}</>;
 });

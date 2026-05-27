@@ -67,7 +67,7 @@ export const AppLayout = observer(function AppLayout({
           onClick={handleTheme}
           c="var(--neutral-color)"
         >
-          {curTheme === "light" ? "★" : curTheme === "dark" ? "☀︎" : "✿"}
+          {curTheme === "light" ? "☀︎": curTheme === "dark" ? "★" : "✿"}
         </Button>
         <Button
           variant="light"

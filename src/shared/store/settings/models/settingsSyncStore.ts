@@ -1,4 +1,4 @@
-import { action, makeAutoObservable } from "mobx";
+import { makeAutoObservable, runInAction } from "mobx";
 import type { ThemeMode } from "../types";
 import type { SettingsStateStore } from "./settingsStateStore";
 
@@ -9,50 +9,44 @@ export class SettingsSyncStore {
 
   init() {
     if (typeof window !== "undefined") {
-      const savedTheme = localStorage.getItem("theme");
-      if (savedTheme === "light" || savedTheme === "dark") {
-        // runInAction(() => { this.theme = savedTheme; });
+      const os = window.matchMedia("(prefers-color-scheme: dark)");
+      this.state.osPreference = os.matches ? "dark" : "light";
+      this.listenOSTheme();
+
+      const savedTheme = localStorage.getItem("theme") as ThemeMode | null;
+      if (savedTheme === "light" || savedTheme === "dark" || savedTheme === "auto") {
         this.setTheme(savedTheme);
       } else {
-        this.setTheme(
-          window.matchMedia("(prefers-color-scheme: dark)").matches
-          ? "dark"
-          : "light"
-        );
+        this.setTheme("auto");
       }
       this.setLanguage(localStorage.getItem("lang") || "ru");
-      this.listenOSTheme();
     }
   }
 
   private listenOSTheme(): void {
     window
       .matchMedia("(prefers-color-scheme: dark)")
-      .addEventListener("change", (e) => {
-        if (!localStorage.getItem("theme")) {
-          this.setTheme(e.matches ? "dark" : "light");
-        }
+      .addEventListener("change", (evt) => {
+        runInAction(() => {
+          this.state.osPreference = evt.matches ? "dark" : "light";
+        });
       });
   }
 
-
-  // @action
   toggleTheme(): void {
-    this.state.theme = this.state.theme === "light" ? "dark" : "light";
-    if (typeof window !== "undefined") {
-      localStorage.setItem("theme", this.state.theme);
-    }
+    const cycle: ThemeMode[] = ["light", "dark", "auto"];
+    const curi = cycle.indexOf(this.state.theme);
+    const next = cycle[(curi + 1) % cycle.length];
+    this.setTheme(next);
   }
 
-  // @action
   setTheme(theme: ThemeMode): void {
     this.state.theme = theme;
     if (typeof window !== "undefined") {
       localStorage.setItem("theme", theme);
     }
   }
-  
-  // @action
+
   setLanguage(language: string): void {
     this.state.language = language;
     if (typeof window !== "undefined") {
