@@ -8,6 +8,10 @@ export const cardsApi = {
     return data;
   },
 
+  async delete(cardId: string | number): Promise<void> {
+    await api.delete(`/cards/${cardId}`);
+  },
+
   async getAll(): Promise<Service[]> {
     const { data } = await api.get<Service[]>("/cards");
     return data;

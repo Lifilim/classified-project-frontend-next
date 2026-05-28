@@ -26,4 +26,9 @@ export class ServicesSyncStore {
   clearMyItems(): void {
     this.state.myItems = [];
   }
+  
+  removeCard(id: string | number): void {
+    this.state.items = this.state.items.filter(i => i.id !== id);
+    this.state.myItems = this.state.myItems.filter(i => i.id !== id);
+  }
 }

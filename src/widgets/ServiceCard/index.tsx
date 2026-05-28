@@ -32,9 +32,9 @@ export function ServiceCard(props: Service) {
         />
       </Card.Section>
 
-      <Stack mt="md" gap="xs">
+      <Stack mt="md" gap="xs" style={{ flex: 1 }}>
         <Group justify="space-between">
-          <Text fw={700} lineClamp={1} tt="uppercase" c="var(--secondary-color)">
+          <Text fw={700} tt="uppercase" c="var(--secondary-color)" style={{ whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis', flex: 1, minWidth: 0 }}>
             {props.title}
           </Text>
           <Badge color="var(--surface-color)" radius={0} variant="filled">
@@ -46,7 +46,7 @@ export function ServiceCard(props: Service) {
           {props.description}
         </Text>
 
-        <Text fw={900} size="xl" c="var(--accent-color)">
+        <Text fw={900} size="xl" mt="auto" c="var(--accent-color)">
           {props.price} ₽
         </Text>
       </Stack>

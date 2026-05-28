@@ -5,7 +5,7 @@
   --secondary-color: #28264b;
   --base-color: #e8eae7;
   --accent-color: #a40033;
-  --surface-color: #959ec9;
+  --surface-color: #c9cde1;/*#959ec9;*/
   --neutral-color: #4e5174;
   --text-color: #fff;
   --antitext-color: #000;
@@ -14,9 +14,9 @@
 :root[data-theme="dark"] {
   --secondary-color: #D7D9B4;
   --base-color: #171518;
-  --accent-color: #92769f;
-  --surface-color: #6A6136;
-  --neutral-color: #B1AE8B;
+  --accent-color: #a156a7;
+  --surface-color: #534c27;
+  --neutral-color: #868364;
   --text-color: #000;
   --antitext-color: #fff;
 }

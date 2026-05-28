@@ -1,17 +1,14 @@
 "use client";
 
-import React, { createContext, useContext, useRef } from "react";
+import React, { createContext, useContext, useRef, useState } from "react";
 import { RootStore } from "./RootStore";
 
 const StoreContext = createContext<RootStore | null>(null);
 
 export function StoreProvider({ children }: { children: React.ReactNode }) {
-  const storeRef = useRef<RootStore | null>(null);
-  if (!storeRef.current) {
-    storeRef.current = new RootStore();
-  }
+  const [store] = useState(() => new RootStore());
   return (
-    <StoreContext.Provider value={storeRef.current}>
+    <StoreContext.Provider value={store}>
       {children}
     </StoreContext.Provider>
   );

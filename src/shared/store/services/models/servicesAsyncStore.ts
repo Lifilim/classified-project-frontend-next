@@ -33,4 +33,16 @@ export class ServicesAsyncStore {
   async create(dto: CreateCardDto): Promise<Service> {
     return cardsApi.create(dto);
   }
+
+  async deleteCard(id: string | number): Promise<void> {
+    this.sync.setLoading(true);
+    try {
+      await cardsApi.delete(id);
+      this.sync.removeCard(id);
+    } catch {
+      this.sync.setError("Не удалось удалить карточку");
+    } finally {
+      this.sync.setLoading(false);
+    }
+  }
 }
